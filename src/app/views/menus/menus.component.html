@@ -1,0 +1,40 @@
+<div class="animated fadeIn">
+    <a routerLink="/menus/crearmenu" class="btn btn-success">CREAR MENU</a>
+    <div class="card">
+        <div class="card-header">
+            LISTA DE MENÚS ACTUAL
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <ul style="padding-top: 10px;">
+                    <li *ngFor="let item of menus" style="margin-top:10px">
+                        <div class="col-12">
+                            <div class="col-8 float-left">
+                                {{item.name}} {{ (item.es_titulo) ? '(TITULO)': ''}}
+                            </div>
+                            <!-- BOTON EDITAR-->
+                            <div class="col-4 float-left" style="text-align: right;">
+                                <a [routerLink]="['/menus/editar', item.id]" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                <button (click)="delete(item.id)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <ul *ngIf="item.hasOwnProperty('children')" style="padding-left:50px; padding-top:10px">
+                            <li *ngFor="let submenu of item.children" style="margin-top:10px; width:80%">
+                                <div class="col-12">
+                                    <div class="col-8 float-left">
+                                        {{submenu.name}}
+                                    </div>
+                                    <!-- BOTON EDITAR-->
+                                    <div class="col-4 float-left" style="text-align: right;">
+                                        <a [routerLink]="['/menus/editar', submenu.id]" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                        <button (click)="delete(submenu.id)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

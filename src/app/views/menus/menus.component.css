@@ -1,0 +1,30 @@
+ul {
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+}
+
+li {
+    border: 1px solid #ccc;
+    overflow: hidden;
+    width: 100%
+}
+
+li:last-child {
+    padding: 7px;
+    width: 100%
+}
+
+li:not(:last-child) {
+    padding: 7px;
+    border-bottom: 1px solid #DDD;
+    width: 100%
+}
+
+.parent:nth-of-type(odd) {
+    background-color: rgb(40, 40, 40);
+}
+
+.parent:nth-of-type(even) {
+    background-color: black;
+}

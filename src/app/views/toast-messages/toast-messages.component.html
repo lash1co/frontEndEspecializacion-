@@ -1,0 +1,5 @@
+<div *ngIf="messages.length > 0" class="wrapper alert-fixed">
+  <aside *ngFor="let message of messages | reverse">
+    <alert class="fade show" [type]="message.style" dismissOnTimeout="5000" dismissible="true">{{message.content}}</alert>
+  </aside>
+</div>

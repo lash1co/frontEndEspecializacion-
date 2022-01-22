@@ -1,0 +1,40 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <strong>Subir Excel</strong>
+    </div>
+    
+    <br/>
+    <br/>
+
+    <div class="form-group">
+      <div class="row" style="margin-left: 20px;">
+        <div class="col-sm-6 col-md-6">
+          <div class="file-field input-field">
+            <div>
+              <label for="file" class="custom-file-label">Subir Archivo (Solo xlsx)</label>
+              <input type="file" id="file" class="custom-file-input" (change)="handleFileInput($event.target.files)">
+              <label >Archivo: {{fileToUpload?.name}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="col-6 col-sm-4 col-md-3 col-xl-2 mb-3 mb-xl-2" *ngIf="mostrarBtnEnviar">
+      <button type="button" class="btn btn-block btn-dark" (click)="llamarServicioExcel()">
+        Enviar Archivo
+        <i class="icon-check"></i>
+      </button>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-xl-2 mb-3 mb-xl-2" *ngIf="mostrarBtnValidar">
+      <button type="button" class="btn btn-block btn-dark" (click)="llamarServicioValidar()">
+        Validar
+        <i class="icon-check"></i>
+      </button>
+    </div>
+  </div>
+</div>

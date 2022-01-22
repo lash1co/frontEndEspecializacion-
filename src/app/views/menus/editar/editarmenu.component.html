@@ -1,0 +1,71 @@
+<alert *ngIf="respuesta == 1" type="success">
+    <strong>Well done!</strong> You successfully read this important alert message.
+</alert>
+<div class="animated fadeIn">
+    <a routerLink="/menus" class="btn btn-success">VOLVER</a>
+    <div class="card">
+        <div class="card-header">
+            EDITAR MENÚ
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <form class="w-100" [formGroup]="frmMenu" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="float-left col-md-6">
+                            <label for="Titulo">Titulo</label>
+                            <input type="text" class="form-control" formControlName="title" id="title" name="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                <div *ngIf="f.title.errors.required">Titulo requerido</div>
+                            </div>
+                        </div>
+                        <div class="float-left col-md-4">
+                            <label for="Url">Url <span class="text-muted">(ejemplo: /nombremenu)</span></label>
+                            <input formControlName="url" type="text" class="form-control" id="url" name="url" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                            <div *ngIf="submitted && f.url.errors" class="invalid-feedback">
+                                <div *ngIf="f.url.errors.required">Titulo requerido</div>
+                            </div>
+                        </div>
+                        <div class="float-left col-md-4">
+                            <label for="Icono">Icono</label>
+                            <input type="text" formControlName="icon" class="form-control" id="icon" name="icon">
+                        </div>
+                        <div class="float-left col-md-4">
+                            <label for="badge_variant">Badge Variable</label>
+                            <input type="text" class="form-control" id="badge_variant" name="badge_variant" formControlName="badge_variant">
+                        </div>
+                        <div class="float-left col-md-3">
+                            <label for="badge_text">Badge Texto</label>
+                            <input type="text" class="form-control" id="badge_text" name="badge_text" formControlName="badge_text">
+                        </div>
+                        <div class="float-left col-md-3">
+                            <div class="form-group">
+                                <label for="children_of">Pertenece a</label>
+                                <select class="form-control" id="children_of" name="children_of" formControlName="children_of">
+                                    <option value="0">Es principal</option>                                    
+                                    <option *ngFor="let menu of menusPadres" value="{{menu.id}}">{{menu.title}}</option>                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="float-left col-md-3">
+                            <label for="es_titulo">Es un titulo?</label>
+                            <select class="form-control" id="es_titulo" name="es_titulo" formControlName="es_titulo">                                
+                                <option value="">Seleccione...</option>                                
+                                <option value="0">No</option>
+                                <option value="1">Si</option>                                
+                            </select>
+                        </div>
+                        <div class="float-left col-md-3">
+                            <label for="Orden">Orden</label>
+                            <input type="number" class="form-control" id="orden" name="orden" formControlName="orden">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
